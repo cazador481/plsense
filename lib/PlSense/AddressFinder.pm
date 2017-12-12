@@ -375,6 +375,7 @@ use PlSense::Entity::Reference;
         my $e = shift @tokens or return;
         if ( ! $e->isa("PPI::Token::Cast") || $e->content eq "\\" ) { return; }
         my $next = shift @tokens;
+        return if (!defined $next);
         my @casted;
         if ( $next->isa("PPI::Structure::Block") ) {
             my $stmt = $next->find_first("PPI::Statement");
