@@ -1,4 +1,5 @@
 #!/usr/bin/env perl
+#PODNAME: plsense-worker-build
 
 use strict;
 use warnings;
