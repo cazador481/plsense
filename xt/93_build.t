@@ -5,7 +5,8 @@ use TestSupport;
 
 my $wait = wait_fin_timeout() || "";
 ok($wait, "wait $wait for network timeout") or done_mytest();
-run_plsense_testcmd("svstart > /dev/null");
+note 'svstart';
+run_plsense_testcmd("svstart");
 ok(is_server_running(), "start server process") or done_mytest();
 
 my @testsrcs;
@@ -43,7 +44,9 @@ sub do_build_test {
 
     SRC:
     foreach my $f ( @{$testsrcs} ) {
-        run_plsense_testcmd("open '$f' > /dev/null");
+    note "opening file $f";
+        run_plsense_testcmd("open '$f'");
+        # run_plsense_testcmd("open '$f' > /dev/null");
         wait_ready($f, 3, 40);
     }
 

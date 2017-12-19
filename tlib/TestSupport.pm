@@ -8,6 +8,7 @@ use Exporter 'import';
 use FindBin;
 use File::Path;
 use IO::Socket;
+use Test::More;
 our @EXPORT = qw( get_tmp_dir
                   get_work_dir
                   create_tmp_dir
@@ -118,7 +119,7 @@ our @EXPORT = qw( get_tmp_dir
     sub get_any_testcmd_string {
         my $cmdstr = shift || "";
         my $workpath = get_work_dir();
-        my $addpath = "PATH=$FindBin::Bin/../blib/script:$FindBin::Bin/../bin:\${PATH} ; export PATH";
+        my $addpath = "PATH=$FindBin::Bin/../lib/script:$FindBin::Bin/../bin:\${PATH} ; export PATH";
         my $chhome = "HOME=$workpath ; export HOME";
         return "$addpath ; $chhome ; $cmdstr";
     }
@@ -137,6 +138,7 @@ our @EXPORT = qw( get_tmp_dir
     sub run_plsense_testcmd {
         my $cmdstr = shift || "";
         system get_plsense_testcmd_string($cmdstr);
+        ok($?==0,"$cmdstr");
     }
 
     sub is_server_running {
