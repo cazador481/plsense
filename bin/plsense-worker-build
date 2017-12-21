@@ -102,7 +102,6 @@ try {
 
     my $perl = get_config("perl");
     my $libopt = get_config("lib-path") ? "-I'".get_config("lib-path")."'" : "";
-
     my @mdls = $srcupdater->update_or_create_modules($filepath, $mdl ? $mdl->get_projectnm : get_config("name"));
     if ( ! -f $mdl_or_file ) { @mdls = ($mdl); }
 
