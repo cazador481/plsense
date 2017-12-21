@@ -2,7 +2,7 @@ package PlSense::Entity;
 
 use strict;
 use warnings;
-use Class::Std::Storable;
+use PlSense::Class::Std::Storable;
 use PlSense::Logger;
 {
     my %type_of :ATTR();

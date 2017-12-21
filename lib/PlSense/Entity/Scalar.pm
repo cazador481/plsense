@@ -3,7 +3,7 @@ package PlSense::Entity::Scalar;
 use parent qw{ PlSense::Entity };
 use strict;
 use warnings;
-use Class::Std::Storable;
+use PlSense::Class::Std::Storable;
 use PlSense::Logger;
 {
     my %value_of :ATTR( :init_arg<value> :default('') );
